@@ -22,7 +22,8 @@
     </bean>
 
     <bean id="musicPlayer"
-          class="com.kyrylo.springcourse.MusicPlayer">
+          class="com.kyrylo.springcourse.MusicPlayer"
+          scope="prototype">
         <property name="musicList">
             <list>
                 <ref bean="musicBean1"/>
