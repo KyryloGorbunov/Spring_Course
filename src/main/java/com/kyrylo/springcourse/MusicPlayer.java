@@ -1,39 +1,40 @@
 package com.kyrylo.springcourse;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import java.util.Random;
+
+@Component
 public class MusicPlayer {
-    private List<Music> musicList = new ArrayList<>();
-    private String name;
-    private int volume;
+    private final ClassicalMusic classicalMusic;
+    private final RockMusic rockMusic;
+    private final RapMusic rapMusic;
 
-    public String getName() {
-        return name;
+    @Autowired
+    public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic, RapMusic rapMusic) {
+        this.classicalMusic = classicalMusic;
+        this.rockMusic = rockMusic;
+        this.rapMusic = rapMusic;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void playMusic(MusicGenre genre) {
+        Random random = new Random();
 
-    public int getVolume() {
-        return volume;
-    }
+        int randomNumber = random.nextInt(3);
 
-    public void setVolume(int volume) {
-        this.volume = volume;
-    }
-
-    public MusicPlayer() {
-    }
-
-    public void setMusicList(List<Music> musicList) {
-        this.musicList = musicList;
-    }
-
-    public void playMusicList() {
-        for (Music music : musicList) {
-            System.out.println("Playing: " + music.getSong());
+        switch (genre) {
+            case ROCK:
+                System.out.println(genre.name() + " playlist: " + rockMusic.getSongs().get(randomNumber));
+                break;
+            case CLASSICAL:
+                System.out.println(genre.name() + " playlist: " + classicalMusic.getSongs().get(randomNumber));
+                break;
+            case RAP:
+                System.out.println(genre.name() + " playlist: " + rapMusic.getSongs().get(randomNumber));
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + genre);
         }
     }
 }

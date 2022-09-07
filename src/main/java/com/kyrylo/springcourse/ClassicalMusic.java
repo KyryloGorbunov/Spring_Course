@@ -1,22 +1,25 @@
 package com.kyrylo.springcourse;
 
+import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Component
 public class ClassicalMusic implements Music {
     private ClassicalMusic() {}
 
-    public static ClassicalMusic getClassicalMusic() {
-        return new ClassicalMusic();
+    private List<String> songs = new ArrayList<>();
+
+    {
+        songs.add("Hungarian Rhapsody");
+        songs.add("Symphony no. 5 in C Minor, op. 67");
+        songs.add("Night on Bald Mountain");
     }
 
-    public void doMyInit() {
-        System.out.println("Doing my initialization");
-    }
-
-    public void doMyDestroy() {
-        System.out.println("Doing my destruction");
-    }
 
     @Override
-    public String getSong() {
-        return "Hungarian Rhapsody";
+    public List<String> getSongs() {
+        return songs;
     }
 }
