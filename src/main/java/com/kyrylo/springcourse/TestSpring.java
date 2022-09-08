@@ -13,6 +13,9 @@ public class TestSpring {
         musicPlayer.playMusic(MusicGenre.ROCK);
         musicPlayer.playMusic(MusicGenre.RAP);
 
+        System.out.println(musicPlayer.getName());
+        System.out.println(musicPlayer.getVolume());
+
         context.close();
     }
 }

@@ -2,12 +2,25 @@ package com.kyrylo.springcourse;
 
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class ClassicalMusic implements Music {
-    private ClassicalMusic() {}
+    private ClassicalMusic() {
+    }
+
+    @PostConstruct
+    public void doMyInit() {
+        System.out.println("Doing my initialization");
+    }
+
+    @PreDestroy
+    public void doMyDestroy() {
+        System.out.println("Doing my destroy");
+    }
 
     private List<String> songs = new ArrayList<>();
 
