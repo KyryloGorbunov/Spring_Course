@@ -1,11 +1,12 @@
 package com.kyrylo.springcourse;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import com.kyrylo.springcourse.config.SpringConfig;
+import com.kyrylo.springcourse.genres.MusicGenre;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class TestSpring {
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context =
-                new ClassPathXmlApplicationContext("applicationContext.xml");
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
 
         MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
 

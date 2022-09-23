@@ -1,5 +1,6 @@
-package com.kyrylo.springcourse;
+package com.kyrylo.springcourse.genres;
 
+import com.kyrylo.springcourse.Music;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;

@@ -1,9 +1,15 @@
 package com.kyrylo.springcourse;
 
+import com.kyrylo.springcourse.genres.ClassicalMusic;
+import com.kyrylo.springcourse.genres.MusicGenre;
+import com.kyrylo.springcourse.genres.RapMusic;
+import com.kyrylo.springcourse.genres.RockMusic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 @Component
@@ -31,6 +37,10 @@ public class MusicPlayer {
         this.classicalMusic = classicalMusic;
         this.rockMusic = rockMusic;
         this.rapMusic = rapMusic;
+    }
+
+    public List<Music> musicList() {
+        return Arrays.asList(classicalMusic, rapMusic, rapMusic);
     }
 
     public void playMusic(MusicGenre genre) {
